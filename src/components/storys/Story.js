@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
 
 const ContentStory = styled.div`
@@ -50,10 +50,16 @@ const StoryCont = styled.div `
 }
 `;
 
-const Story = () => {
+const Story = (props) => {
+
+  // evento principal para mostrar 
+  const openView = () => {
+    props.openView(true)
+  }
+
     return (
       <>
-        <ContentStory>
+        <ContentStory onClick={openView}>
             <StoryCont>
                 <img src="https://cdn.pixabay.com/photo/2018/01/06/09/25/hijab-3064633_960_720.jpg" alt="" />
             </StoryCont>

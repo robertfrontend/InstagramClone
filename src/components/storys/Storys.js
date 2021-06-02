@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components';
 
 // components
@@ -18,26 +18,55 @@ const StoryContain = styled.div`
     overflow-x: scroll;
     background-color: #95a5a60c;
     border-bottom: 1px solid #95a5a625;
-
+    padding: 0.3em 0;
 `;
 
 
 const Storys = () => {
+    const [view, setOpenView] = useState(false)
 
-    const lasStorys = [1,2,3,4,5,6,7,8]
+    const lasStorys = [1, 2, 3, 4, 5, 6, 7, 8]
+    
+    // open modal view desde el Story
+    const openView = (data) => {
+        setOpenView(data)
+    }
+
+    // close modal view desde el StoryView
+    const openViewClose = (data) => {
+        setOpenView(data)
+    }
 
     return (
         <StoryContain>
-            <MyStory/>
+
+            {/** componente mi historias */}
+            <MyStory />
+
+            
+            {/** componente de las historias */}
             {
                 lasStorys.map(res => {
                     return (
-                        <Story key={res}/>
+                        <Story
+                            key={res}
+                            openView={openView}
+                            view={view}
+                        />
                     )
                 })
             }
 
-            <StoryView/>
+            {/** Componente de la historia completa */}
+            {
+                view ?
+                    <StoryView
+                        open={view}
+                        openView={openViewClose}
+                    />
+                : null
+            }
+          
         </StoryContain>
     )
 }
