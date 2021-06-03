@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -84,11 +84,14 @@ const FooterPost = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    font-size: 22px;
+    font-size: 24px;
     i {
         padding-right:8px;
     }
     .treeOption {
+        .heartlike {
+            color: #e74c3c;
+        }
     }
 
     .save {
@@ -115,8 +118,15 @@ const ContentInfo = styled.div`
 
 
 
+const Post = ({ datos }) => {
+    const [like, setlike] = useState(false)
+    const [todosLikes, settodosLikes] = useState(0)
 
-const Post = () => {
+    const onLike = () => {
+        setlike(true)
+        settodosLikes(1)
+    }
+
     return (
         <>
             <ContentPost>
@@ -134,12 +144,12 @@ const Post = () => {
                     </HeaderPost>
                 </Container>
                 <ContenImagePost>
-                    <img src="https://cdn.pixabay.com/photo/2018/01/06/09/25/hijab-3064633_960_720.jpg" alt="" />
+                    <img src={datos.download_url} alt="" loading="lazy" width={datos.width}/>
                 </ContenImagePost>
             <Container>
                     <FooterPost>
                         <div className="treeOption">
-                            <i className="far fa-heart"></i>
+                            <i className={like ? "fas fa-heart heartlike" : "far fa-heart" } onClick={onLike}></i>
                             <i className="far fa-comment"></i>
                             <i className="far fa-paper-plane"></i>
                         </div>
@@ -148,9 +158,9 @@ const Post = () => {
                         </div>
                     </FooterPost>
                     <ContentInfo>
-                        <div className="like"> <span>2.500</span> Likes</div>
+                        <div className="like"> <span> {todosLikes} </span> Personas le han gustado</div>
                         <div className="infoUser">
-                            <span >username</span> Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                            <span >{datos.author.replace(/\s/g, '').toLowerCase() }</span> Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                             Aut deleniti corrupti nam aspernatur ducimus officiis voluptates adipisci excepturi eaque dolores.
                             <br /> <br />
                             Lorem ipsum dolor sit amet.

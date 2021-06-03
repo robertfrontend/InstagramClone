@@ -1,38 +1,55 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components';
 import Avatar from './utils/AvatarUser'
 
 
-const FooterDiv = styled.footer`
-    width: 100%;
-    height: auto;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 100;
-    background-color: white;
-    border-top: 1px solid #95a5a625;
-
-    .content {
-        width: 95%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        margin: 0 auto;
-    }
-    div {
-        font-size: 1.3em;
-        color: #2c3e50;
-        padding: 0 0.5em;
-    }
-`;
-
 const Footer = () => {
+    const [position, setPosition] = useState('')
+
     let imagenUser = "https://cdn.pixabay.com/photo/2018/01/06/09/25/hijab-3064633_960_720.jpg"
+
+    var scrollPos = 0;
+    window.addEventListener('scroll', function () {
+        if ((document.body.getBoundingClientRect()).top > scrollPos) {
+            // ARRIBA
+            setPosition('')
+        }
+        else {
+            // ABAJO
+            setPosition('paddingBottom')
+            scrollPos = (document.body.getBoundingClientRect()).top;
+        }
+    });
+
+    const FooterDiv = styled.footer `
+        width: 100%;
+        height: auto;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 100;
+        background-color: white;
+        border-top: 1px solid #95a5a625;
+        padding-bottom: ${position === 'paddingBottom' ? 1 :0}em;
+
+        .content {
+            width: 95%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin: 0 auto;
+        }
+        div {
+            font-size: 1.3em;
+            color: #2c3e50;
+            padding: 0 0.5em;
+        }
+    `;
+
     return (
         <>
-            <FooterDiv>
+            <FooterDiv >
                 <div className="content">
                     <div>
                         <svg aria-label="Inicio" className="_8-yf5 " fill="#262626" height="22" viewBox="0 0 48 48" width="22"><path d="M45.5 48H30.1c-.8 0-1.5-.7-1.5-1.5V34.2c0-2.6-2.1-4.6-4.6-4.6s-4.6 2.1-4.6 4.6v12.3c0 .8-.7 1.5-1.5 1.5H2.5c-.8 0-1.5-.7-1.5-1.5V23c0-.4.2-.8.4-1.1L22.9.4c.6-.6 1.6-.6 2.1 0l21.5 21.5c.3.3.4.7.4 1.1v23.5c.1.8-.6 1.5-1.4 1.5z"></path></svg>
