@@ -1,7 +1,7 @@
 import React, { useState, useEffect  } from 'react'
 import axios from 'axios'
 import Post from './Post'
-import componentLoading from '../utils/Loading'
+import ComponentLoading from '../utils/Loading'
 const Posts = () => {
 
     const [todoPosts, setPosts] = useState([])
@@ -14,7 +14,7 @@ const Posts = () => {
     const getPosts = async () => {
         setLoading(true)
         try {
-            const response = await axios.get('https://picsum.photos/v2/list?page=1&limit=10')
+            const response = await axios.get('https://picsum.photos/v2/list?page=2&limit=10')
             const posts = response.data
 
             setPosts(posts)
@@ -22,18 +22,21 @@ const Posts = () => {
         } catch (error) {
             console.error(error, 'error posts');
         }
-        setLoading(false)
+
+        setTimeout(() => {
+            setLoading(false)
+        }, 3000)
     }
 
 
     if (loading) return (
-       <div className="lds-dual-ring"></div>
+       <ComponentLoading></ComponentLoading>
     )
 
 
     return (
         <>
-            <componentLoading></componentLoading>
+            
             {
                 todoPosts.map(res => {
                     return (

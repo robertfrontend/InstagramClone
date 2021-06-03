@@ -144,7 +144,7 @@ const Post = ({ datos }) => {
                     </HeaderPost>
                 </Container>
                 <ContenImagePost>
-                    <img src={datos.download_url} alt="" loading="lazy" width={datos.width}/>
+                    <img src={datos.download_url} alt="" width={datos.width}/>
                 </ContenImagePost>
             <Container>
                     <FooterPost>
