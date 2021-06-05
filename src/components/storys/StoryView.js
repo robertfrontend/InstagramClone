@@ -146,7 +146,7 @@ const StoryView = (props) => {
                             <Avatar
                                 imagen={"https://cdn.pixabay.com/photo/2018/01/06/09/25/hijab-3064633_960_720.jpg"}
                                 color={"transparent"}
-                                tamaño={"40"} /**tamaño en px */
+                                tamano={"40"} /**tamano en px */
                             >
                             </Avatar>
                             <span>nameuser</span>

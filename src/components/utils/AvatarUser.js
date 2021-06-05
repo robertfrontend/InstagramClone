@@ -4,16 +4,13 @@ import styled from 'styled-components'
 
 
 const AvatarUser = (props) => {
-    console.log(props.tamaño, 'propsss avatqar use');
-
-    let tamañoImagen = props.tamaño - 12
-    console.log(tamañoImagen, 'tamaño imagen');
+    let tamanoImagen = props.tamano - 12
 
     const Avatar = styled.div`
     display: flex;
     align-items: center;
-    width: ${props.tamaño || 40}px;
-    height: ${props.tamaño || 40}px;
+    width: ${props.tamano || 40}px;
+    height: ${props.tamano || 40}px;
     margin: auto;
     position: relative;
     box-sizing: border-box;
@@ -38,8 +35,8 @@ const AvatarUser = (props) => {
     }
 
     img {
-        width: ${tamañoImagen || 28}px;
-        height: ${tamañoImagen || 28}px;
+        width: ${tamanoImagen || 28}px;
+        height: ${tamanoImagen || 28}px;
         border-radius: 5em;
         object-fit: cover;
             padding: 1em;
@@ -48,7 +45,7 @@ const AvatarUser = (props) => {
 
     return (
         <Avatar>
-            <img src={props.imagen} alt="" />
+            <img src={props.imagen || 'https://cdn.pixabay.com/photo/2018/01/06/09/25/hijab-3064633_960_720.jpg' } alt="" />
         </Avatar>
     )
 }

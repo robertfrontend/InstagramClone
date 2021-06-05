@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import AvatarUser from '../components/utils/AvatarUser'
 
 const HeaderPerfil = styled.div`
     padding-top: 0.2em;
@@ -36,7 +37,8 @@ const HeaderPerfil = styled.div`
 `
 
 const ContetPerfil = styled.div`
-
+    width: 100%;
+    min-height: 100vh;
 `
 
 const InfoPerfil = styled.div`
@@ -49,7 +51,7 @@ const InfoPerfil = styled.div`
     padding-left: 1em;
 
     .part1 {
-        width: 100px;
+        padding-right: 1em;
     }
     .part2 {
         width: 60%;
@@ -73,6 +75,10 @@ const InfoPerfil = styled.div`
 
 
 const Perfil = () => {
+
+    let imagenUser = "https://cdn.pixabay.com/photo/2018/01/06/09/25/hijab-3064633_960_720.jpg"
+
+
     return (
         <ContetPerfil>
             <HeaderPerfil>
@@ -87,7 +93,11 @@ const Perfil = () => {
                 </div>
             </HeaderPerfil>
             <InfoPerfil>
-                <div className="part1">fotoo</div>
+                <div className="part1">
+                    <AvatarUser tamano="100"
+                     color={"transparent"}
+                    ></AvatarUser>
+                </div>
                 <div className="part2">
                     <span>robertrm0</span>
                     <button>Editar perfil</button>

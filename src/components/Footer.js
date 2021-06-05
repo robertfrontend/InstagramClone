@@ -4,49 +4,36 @@ import styled from 'styled-components';
 import Avatar from './utils/AvatarUser'
 
 
+const FooterDiv = styled.footer `
+    width: 100%;
+    height: auto;
+    position: fixed !important;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: white;
+    border-top: 1px solid #95a5a625;
+    padding-bottom: 1em;
+    .content {
+        width: 95%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 auto;
+    }
+    div {
+        font-size: 1.3em;
+        color: #2c3e50;
+        padding: 0 0.5em;
+    }
+`;
+
+
+
 const Footer = () => {
-    const [position, setPosition] = useState('')
-
     let imagenUser = "https://cdn.pixabay.com/photo/2018/01/06/09/25/hijab-3064633_960_720.jpg"
-
-    var scrollPos = 0;
-    window.addEventListener('scroll', function () {
-        if ((document.body.getBoundingClientRect()).top > scrollPos) {
-            // ARRIBA
-            setPosition('')
-        }
-        else {
-            // ABAJO
-            setPosition('paddingBottom')
-            scrollPos = (document.body.getBoundingClientRect()).top;
-        }
-    });
-
-    const FooterDiv = styled.footer `
-        width: 100%;
-        height: auto;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        z-index: 100;
-        background-color: white;
-        border-top: 1px solid #95a5a625;
-        padding-bottom: ${position === 'paddingBottom' ? 1 :0}em;
-
-        .content {
-            width: 95%;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            margin: 0 auto;
-        }
-        div {
-            font-size: 1.3em;
-            color: #2c3e50;
-            padding: 0 0.5em;
-        }
-    `;
 
     return (
         <>
@@ -70,7 +57,7 @@ const Footer = () => {
                         <Link to="/perfil">
                             <Avatar
                                 color={"transparent"}
-                                tamaño={"40"} /**tamaño en px */
+                                tamano={"40"} /**tamano en px */
                                 imagen={imagenUser}
                             >
                             </Avatar>
