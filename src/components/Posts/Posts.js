@@ -1,18 +1,29 @@
-import React, { useState, useEffect  } from 'react'
-import axios from 'axios'
-import Post from './Post'
+import React, { useState, useEffect, useContext } from 'react'
+import axios from 'axios';
+
+import { DataContext } from '../../context/DataContext'
+
 import ComponentLoading from '../utils/Loading'
+import Post from './Post'
+
+
 const Posts = () => {
+
+    // * Falta detectar evento desde el context
 
     const [todoPosts, setPosts] = useState([])
     const [loading, setLoading] = useState(false)
 
+
     useEffect(() => {
         getPosts()
+
     }, [])
+
 
     const getPosts = async () => {
         setLoading(true)
+        setPosts([])
         try {
             const response = await axios.get('https://picsum.photos/v2/list?page=2&limit=10')
             const posts = response.data

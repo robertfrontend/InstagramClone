@@ -76,7 +76,7 @@ const InfoPerfil = styled.div`
 
 const Perfil = () => {
 
-    let imagenUser = "https://cdn.pixabay.com/photo/2018/01/06/09/25/hijab-3064633_960_720.jpg"
+    const imagenUser = "https://cdn.pixabay.com/photo/2018/01/06/09/25/hijab-3064633_960_720.jpg"
 
 
     return (
@@ -94,7 +94,8 @@ const Perfil = () => {
             </HeaderPerfil>
             <InfoPerfil>
                 <div className="part1">
-                    <AvatarUser tamano="100"
+                    <AvatarUser
+                        tamano="100"
                      color={"transparent"}
                     ></AvatarUser>
                 </div>
